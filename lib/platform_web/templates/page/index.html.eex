@@ -1,0 +1,11 @@
+<!--
+<div class="container">
+  <a class="button" href="/players/new">Crear Player Cuenta</a>
+  <a class="button" href="/players">Lista todos Players</a>
+  <%= IO.inspect("Hello World!") %>
+</div>
+-->
+<div class="container">
+  <%= link("Create Player Account", to: "/players/new", class: "button") %>
+  <%= link("List All Players", to: "/players", class: "button") %>
+</div>
