@@ -19,10 +19,13 @@ config :platform, Platform.Repo,
 config :platform, PlatformWeb.Endpoint,
   #url: [host: "example.com", port: 80],
   #cache_static_manifest: "priv/static/cache_manifest.json"
+  http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "secret-peak-31140.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
-  cache_static_manifest: "priv/static/cache_manifest.json",
-  secret_key_base: Map.fetch!(System.get_env(), "cRzCQ8f9yFHpdWHYiwxQA/j3yMP9HaoWjVZEVeKdNIZBLph4ty/Vdj3cwNFDBg7S")
+  #url: [scheme: "https", host: "secret-peak-31140.herokuapp.com", port: 443],
+  #force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  #cache_static_manifest: "priv/static/cache_manifest.json",
+  #secret_key_base: Map.fetch!(System.get_env(), secret_key_base)
 
 # Do not print debug messages in production
 config :logger, level: :info

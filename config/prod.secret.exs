@@ -17,7 +17,7 @@ config :platform, Platform.Repo,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10")
 
 secret_key_base =
-  System.get_env("SECRET_KEY_BASE") ||
+  System.get_env("cRzCQ8f9yFHpdWHYiwxQA/j3yMP9HaoWjVZEVeKdNIZBLph4ty/Vdj3cwNFDBg7S") ||
     raise """
     environment variable SECRET_KEY_BASE is missing.
     You can generate one by calling: mix phx.gen.secret
