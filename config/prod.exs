@@ -1,5 +1,12 @@
 use Mix.Config
 
+# Configure your database COPIO DE LIBRO
+config :platform, Platform.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("postgres://lzepfbjqbmzzap:c0a52abd15efc121ac093e2cf7f77e6ba914b41ea3e446b911450d518ea23780@ec2-54-210-128-153.compute-1.amazonaws.com:5432/dbi8io3ekl37u9"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl: true
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.
@@ -10,8 +17,12 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :platform, PlatformWeb.Endpoint,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  #url: [host: "example.com", port: 80],
+  #cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [scheme: "https", host: "secret-peak-31140.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  secret_key_base: Map.fetch!(System.get_env(), "cRzCQ8f9yFHpdWHYiwxQA/j3yMP9HaoWjVZEVeKdNIZBLph4ty/Vdj3cwNFDBg7S")
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -52,4 +63,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
-import_config "prod.secret.exs"
+# import_config "prod.secret.exs" COMENTAMOS
